@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Admission Form</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    body{
+        background:#f4f7fc;
+        padding:40px;
+    }
+
+    .container{
+        max-width:1000px;
+        margin:auto;
+        background:white;
+        padding:30px;
+        border-radius:12px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h1{
+        text-align:center;
+        color:#2563eb;
+        margin-bottom:25px;
+    }
+
+    .section-title{
+        margin:20px 0 10px;
+        color:#1e40af;
+        border-bottom:2px solid #e5e7eb;
+        padding-bottom:5px;
+    }
+
+    .form-grid{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+    .full-width{
+        grid-column:span 2;
+    }
+
+    label{
+        display:block;
+        margin-bottom:5px;
+        font-weight:600;
+        color:#374151;
+    }
+
+    input,
+    select,
+    textarea{
+        width:100%;
+        padding:10px;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        outline:none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+        border-color:#2563eb;
+    }
+
+    textarea{
+        resize:vertical;
+    }
+
+    .submit-btn{
+        width:100%;
+        padding:14px;
+        background:#2563eb;
+        color:white;
+        border:none;
+        border-radius:8px;
+        font-size:16px;
+        cursor:pointer;
+        margin-top:20px;
+    }
+
+    .submit-btn:hover{
+        background:#1d4ed8;
+    }
+
+    @media(max-width:768px){
+        .form-grid{
+            grid-template-columns:1fr;
+        }
+
+        .full-width{
+            grid-column:span 1;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Patient Admission Form</h1>
+
+    <form>
+
+        <h3 class="section-title">Patient Information</h3>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Patient Name</label>
+                <input type="text" placeholder="Enter patient name">
+            </div>
+
+            <div>
+                <label>Age</label>
+                <input type="number" placeholder="Age">
+            </div>
+
+            <div>
+                <label>Gender</label>
+                <select>
+                    <option>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Blood Group</label>
+                <select>
+                    <option>Select Blood Group</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter phone number">
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="email" placeholder="Enter email">
+            </div>
+
+        </div>
+
+        <h3 class="section-title">Admission Details</h3>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Admission Date</label>
+                <input type="date">
+            </div>
+
+            <div>
+                <label>Department</label>
+                <select>
+                    <option>Select Department</option>
+                    <option>Cardiology</option>
+                    <option>Neurology</option>
+                    <option>Orthopedics</option>
+                    <option>Pediatrics</option>
+                    <option>General Medicine</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Doctor Assigned</label>
+                <input type="text" placeholder="Doctor Name">
+            </div>
+
+            <div>
+                <label>Room Number</label>
+                <input type="text" placeholder="Room Number">
+            </div>
+
+        </div>
+
+        <h3 class="section-title">Guardian Information</h3>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Guardian Name</label>
+                <input type="text" placeholder="Guardian Name">
+            </div>
+
+            <div>
+                <label>Relationship</label>
+                <input type="text" placeholder="Father / Mother / Spouse">
+            </div>
+
+            <div>
+                <label>Guardian Contact</label>
+                <input type="tel" placeholder="Contact Number">
+            </div>
+
+            <div>
+                <label>Emergency Contact</label>
+                <input type="tel" placeholder="Emergency Number">
+            </div>
+
+        </div>
+
+        <h3 class="section-title">Medical Information</h3>
+
+        <div class="form-grid">
+
+            <div class="full-width">
+                <label>Chief Complaint / Reason for Admission</label>
+                <textarea rows="4"></textarea>
+            </div>
+
+            <div class="full-width">
+                <label>Medical History</label>
+                <textarea rows="4"></textarea>
+            </div>
+
+            <div class="full-width">
+                <label>Address</label>
+                <textarea rows="3"></textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Submit Admission
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
