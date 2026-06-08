@@ -1,0 +1,38 @@
+div{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(245, 179, 100);
+    border: 3px solid black;
+    margin: 20px;
+    display: inline-block;
+}
+#s{
+    background-color: rgb(37, 247, 177);
+    position: static;
+    /* here position will not change because we have set its position to static */
+    top:100px;
+    bottom: 100px;
+}
+#r{
+    background-color: rgb(237, 156, 156);
+    position: relative;
+    top: 100px;
+    left: 150px;
+}
+#ABSOLUTE{
+    background-color: rgb(212, 237, 188);
+    position: absolute;
+    top: 50px;
+    left: 70px;
+}
+/* section{
+    position: absolute;
+} */
+#f{
+    background-color: rgb(180, 120, 237);
+    position: fixed;
+    top: 100px;
+    left: 150px;
+}
+
+
