@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doraemon CSS Art</title>
+
+<style>
+  body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f2f2f2;
+  }
+
+  /* Main head */
+  .doraemon{
+    position:relative;
+    width:260px;
+    height:260px;
+    background:#00a2e8;
+    border-radius:50%;
+    border:3px solid #000;
+  }
+
+  /* Face (white part) */
+  .face{
+    position:absolute;
+    width:200px;
+    height:160px;
+    background:white;
+    border-radius:50%;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    border:3px solid #000;
+  }
+
+  /* Eyes */
+  .eye{
+    position:absolute;
+    width:45px;
+    height:55px;
+    background:white;
+    border:3px solid #000;
+    border-radius:50%;
+    top:40px;
+  }
+
+  .eye.left{ left:70px; }
+  .eye.right{ right:70px; }
+
+  .pupil{
+    position:absolute;
+    width:10px;
+    height:15px;
+    background:#000;
+    border-radius:50%;
+    top:25px;
+    left:18px;
+  }
+
+  /* Nose */
+  .nose{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:red;
+    border-radius:50%;
+    border:2px solid #000;
+    top:95px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  /* Mouth */
+  .mouth{
+    position:absolute;
+    width:120px;
+    height:60px;
+    border-bottom:3px solid #000;
+    border-radius:0 0 60px 60px;
+    top:120px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  /* Whiskers */
+  .whisker{
+    position:absolute;
+    width:60px;
+    height:2px;
+    background:#000;
+    top:110px;
+  }
+
+  .w1{ left:10px; transform:rotate(10deg); }
+  .w2{ left:10px; top:125px; }
+  .w3{ left:10px; top:140px; transform:rotate(-10deg); }
+
+  .w4{ right:10px; transform:rotate(-10deg); }
+  .w5{ right:10px; top:125px; }
+  .w6{ right:10px; top:140px; transform:rotate(10deg); }
+
+  /* Bell */
+  .bell{
+    position:absolute;
+    width:40px;
+    height:40px;
+    background:#f7d117;
+    border:3px solid #000;
+    border-radius:50%;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  .bell-line{
+    position:absolute;
+    width:100%;
+    height:2px;
+    background:#000;
+    top:10px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="doraemon">
+  <div class="face"></div>
+
+  <div class="eye left">
+    <div class="pupil"></div>
+  </div>
+  <div class="eye right">
+    <div class="pupil"></div>
+  </div>
+
+  <div class="nose"></div>
+  <div class="mouth"></div>
+
+  <div class="whisker w1"></div>
+  <div class="whisker w2"></div>
+  <div class="whisker w3"></div>
+  <div class="whisker w4"></div>
+  <div class="whisker w5"></div>
+  <div class="whisker w6"></div>
+
+  <div class="bell">
+    <div class="bell-line"></div>
+  </div>
+</div>
+
+</body>
+</html>
