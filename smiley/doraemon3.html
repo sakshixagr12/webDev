@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doraemon Interactive Scene</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(#6ec6ff, #eaf6ff);
+  transition:1s;
+}
+
+/* DARK MODE */
+body.night{
+  background:linear-gradient(#0b1d3a, #1c2b4a);
+}
+
+/* BUTTON */
+button{
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* STARS */
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:0;
+}
+
+body.night .star{
+  opacity:1;
+  animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+  0%,100%{ opacity:0.2; }
+  50%{ opacity:1; }
+}
+
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  width:120px;
+  height:60px;
+  background:white;
+  border-radius:50px;
+  animation:moveClouds 20s linear infinite;
+}
+
+.cloud::before,
+.cloud::after{
+  content:"";
+  position:absolute;
+  background:white;
+  border-radius:50%;
+}
+
+.cloud::before{ width:60px;height:60px;top:-20px;left:15px; }
+.cloud::after{ width:70px;height:70px;top:-25px;right:15px; }
+
+@keyframes moveClouds{
+  from{ transform:translateX(-200px); }
+  to{ transform:translateX(1200px); }
+}
+
+/* DORAEMON */
+.doraemon{
+  position:relative;
+  width:300px;
+  height:420px;
+  animation:bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-15px); }
+}
+
+/* HEAD */
+.head{
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:#00a2e8;
+  border-radius:50%;
+  border:3px solid #000;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.face{
+  position:absolute;
+  width:190px;
+  height:150px;
+  background:white;
+  border-radius:50%;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  border:3px solid #000;
+}
+
+/* EYES */
+.eye{
+  position:absolute;
+  width:45px;
+  height:55px;
+  background:white;
+  border:3px solid #000;
+  border-radius:50%;
+  top:55px;
+}
+
+.eye.left{ left:70px; }
+.eye.right{ right:70px; }
+
+.pupil{
+  width:10px;
+  height:15px;
+  background:#000;
+  border-radius:50%;
+  position:absolute;
+  top:25px;
+  left:18px;
+}
+
+/* BLINK */
+.eye{
+  animation:blink 4s infinite;
+}
+
+@keyframes blink{
+  0%, 96%, 100%{ transform:scaleY(1); }
+  97%, 99%{ transform:scaleY(0.1); }
+}
+
+/* NOSE */
+.nose{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:red;
+  border-radius:50%;
+  border:2px solid #000;
+  top:110px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* MOUTH */
+.mouth{
+  position:absolute;
+  width:120px;
+  height:60px;
+  border-bottom:3px solid #000;
+  border-radius:0 0 60px 60px;
+  top:135px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* BODY */
+.body{
+  position:absolute;
+  width:240px;
+  height:220px;
+  background:#00a2e8;
+  border-radius:50%;
+  border:3px solid #000;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* BELLY */
+.belly{
+  position:absolute;
+  width:170px;
+  height:150px;
+  background:white;
+  border-radius:50%;
+  border:3px solid #000;
+  top:25px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* POCKET */
+.pocket{
+  position:absolute;
+  width:90px;
+  height:60px;
+  border:3px solid #000;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  top:70px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* ARMS */
+.arm{
+  position:absolute;
+  width:80px;
+  height:40px;
+  background:#00a2e8;
+  border:3px solid #000;
+  top:170px;
+}
+
+.arm.left{
+  left:-40px;
+  border-radius:40px;
+  transform:rotate(20deg);
+}
+
+.arm.right{
+  right:-40px;
+  border-radius:40px;
+  transform:rotate(-20deg);
+  animation:wave 1.5s infinite;
+  transform-origin:left center;
+}
+
+/* WAVE */
+@keyframes wave{
+  0%,100%{ transform:rotate(-20deg); }
+  50%{ transform:rotate(-50deg); }
+}
+
+/* HAND */
+.hand{
+  position:absolute;
+  width:50px;
+  height:50px;
+  background:white;
+  border:3px solid #000;
+  border-radius:50%;
+  bottom:-15px;
+}
+
+/* BELL */
+.bell{
+  position:absolute;
+  width:40px;
+  height:40px;
+  background:#f7d117;
+  border:3px solid #000;
+  border-radius:50%;
+  top:230px;
+  left:50%;
+  transform:translateX(-50%);
+}
+</style>
+</head>
+
+<body>
+
+<button onclick="toggleMode()">Toggle Day/Night</button>
+
+<!-- stars -->
+<div class="star" style="top:50px;left:100px;"></div>
+<div class="star" style="top:120px;left:300px;"></div>
+<div class="star" style="top:200px;left:500px;"></div>
+<div class="star" style="top:80px;left:700px;"></div>
+
+<!-- clouds -->
+<div class="cloud" style="top:80px;left:-150px;"></div>
+<div class="cloud" style="top:160px;left:-300px;"></div>
+
+<div class="doraemon">
+
+  <div class="head">
+    <div class="face"></div>
+
+    <div class="eye left"><div class="pupil"></div></div>
+    <div class="eye right"><div class="pupil"></div></div>
+
+    <div class="nose"></div>
+    <div class="mouth"></div>
+  </div>
+
+  <div class="body">
+    <div class="belly"></div>
+    <div class="pocket"></div>
+
+    <div class="arm left"><div class="hand"></div></div>
+    <div class="arm right"><div class="hand"></div></div>
+
+    <div class="bell"></div>
+  </div>
+
+</div>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle("night");
+}
+</script>
+
+</body>
+</html>
