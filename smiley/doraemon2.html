@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doraemon Anime Scene</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(#6ec6ff, #eaf6ff);
+}
+
+/* SKY EFFECT */
+.sky{
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+/* SUN */
+.sun{
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle, #fff176, #ff9800);
+  border-radius:50%;
+  top:60px;
+  left:80px;
+  box-shadow:0 0 60px rgba(255,200,0,0.8);
+}
+
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  background:#fff;
+  border-radius:50px;
+  width:120px;
+  height:60px;
+  opacity:0.9;
+  animation:moveClouds 12s linear infinite;
+}
+
+.cloud::before,
+.cloud::after{
+  content:"";
+  position:absolute;
+  background:#fff;
+  border-radius:50%;
+}
+
+.cloud::before{
+  width:60px;
+  height:60px;
+  top:-20px;
+  left:15px;
+}
+
+.cloud::after{
+  width:70px;
+  height:70px;
+  top:-25px;
+  right:15px;
+}
+
+.cloud1{ top:80px; left:-150px; animation-duration:18s; }
+.cloud2{ top:160px; left:-250px; animation-duration:22s; transform:scale(1.2); }
+.cloud3{ top:40px; left:-350px; animation-duration:25s; transform:scale(0.8); }
+
+@keyframes moveClouds{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(1400px); }
+}
+
+/* HILLS */
+.hill{
+  position:absolute;
+  bottom:0;
+  width:300px;
+  height:200px;
+  background:#4caf50;
+  border-radius:50%;
+}
+
+.hill1{ left:-50px; }
+.hill2{ left:200px; background:#43a047; width:350px; height:220px; }
+.hill3{ right:-80px; background:#2e7d32; }
+
+/* DORAEMON WRAPPER */
+.doraemon{
+  position:relative;
+  width:300px;
+  height:420px;
+  z-index:10;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
+}
+
+/* HEAD */
+.head{
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:#00a2e8;
+  border-radius:50%;
+  border:3px solid #000;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* FACE */
+.face{
+  position:absolute;
+  width:190px;
+  height:150px;
+  background:white;
+  border-radius:50%;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  border:3px solid #000;
+}
+
+/* EYES */
+.eye{
+  position:absolute;
+  width:45px;
+  height:55px;
+  background:white;
+  border:3px solid #000;
+  border-radius:50%;
+  top:55px;
+}
+
+.eye.left{ left:70px; }
+.eye.right{ right:70px; }
+
+.pupil{
+  width:10px;
+  height:15px;
+  background:#000;
+  border-radius:50%;
+  position:absolute;
+  top:25px;
+  left:18px;
+}
+
+/* NOSE */
+.nose{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:red;
+  border-radius:50%;
+  border:2px solid #000;
+  top:110px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* MOUTH */
+.mouth{
+  position:absolute;
+  width:120px;
+  height:60px;
+  border-bottom:3px solid #000;
+  border-radius:0 0 60px 60px;
+  top:135px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* BODY */
+.body{
+  position:absolute;
+  width:240px;
+  height:220px;
+  background:#00a2e8;
+  border-radius:50%;
+  border:3px solid #000;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* BELLY */
+.belly{
+  position:absolute;
+  width:170px;
+  height:150px;
+  background:white;
+  border-radius:50%;
+  border:3px solid #000;
+  top:25px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* POCKET */
+.pocket{
+  position:absolute;
+  width:90px;
+  height:60px;
+  border:3px solid #000;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  top:70px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* ARMS */
+.arm{
+  position:absolute;
+  width:80px;
+  height:40px;
+  background:#00a2e8;
+  border:3px solid #000;
+  top:170px;
+}
+
+.arm.left{
+  left:-40px;
+  border-radius:40px;
+  transform:rotate(20deg);
+}
+
+.arm.right{
+  right:-40px;
+  border-radius:40px;
+  transform:rotate(-20deg);
+}
+
+/* HANDS */
+.hand{
+  position:absolute;
+  width:50px;
+  height:50px;
+  background:white;
+  border:3px solid #000;
+  border-radius:50%;
+  bottom:-15px;
+}
+
+/* BELL */
+.bell{
+  position:absolute;
+  width:40px;
+  height:40px;
+  background:#f7d117;
+  border:3px solid #000;
+  border-radius:50%;
+  top:230px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sky">
+  <div class="sun"></div>
+
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <div class="hill hill1"></div>
+  <div class="hill hill2"></div>
+  <div class="hill hill3"></div>
+</div>
+
+<div class="doraemon">
+
+  <div class="head">
+    <div class="face"></div>
+
+    <div class="eye left"><div class="pupil"></div></div>
+    <div class="eye right"><div class="pupil"></div></div>
+
+    <div class="nose"></div>
+    <div class="mouth"></div>
+  </div>
+
+  <div class="body">
+    <div class="belly"></div>
+    <div class="pocket"></div>
+
+    <div class="arm left"><div class="hand"></div></div>
+    <div class="arm right"><div class="hand"></div></div>
+
+    <div class="bell"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
