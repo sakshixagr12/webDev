@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doraemon Arcade</title>
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  background:linear-gradient(#6ec6ff,#eaf6ff);
+  font-family:Arial;
+}
+
+/* HUD */
+#hud{
+  position:absolute;
+  top:10px;
+  left:10px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+#controls{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+button{
+  padding:10px;
+  margin:5px;
+}
+
+/* DORAEMON */
+.doraemon{
+  position:absolute;
+  bottom:120px;
+  left:50px;
+  width:70px;
+  height:90px;
+}
+
+.body{
+  width:70px;
+  height:70px;
+  background:#00a2e8;
+  border-radius:50%;
+  border:2px solid #000;
+  position:absolute;
+  bottom:0;
+}
+
+.face{
+  width:50px;
+  height:40px;
+  background:white;
+  border-radius:50%;
+  position:absolute;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* ROBOT ENEMY */
+.robot{
+  position:absolute;
+  width:60px;
+  height:80px;
+  background:#444;
+  border-radius:10px;
+  border:2px solid #000;
+}
+
+/* DORAYAKI */
+.dorayaki{
+  position:absolute;
+  width:25px;
+  height:25px;
+  background:#d2691e;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* GAME OVER */
+#gameover{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:40px;
+  font-weight:bold;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="hud">
+Score: <span id="score">0</span> |
+Lives: <span id="lives">3</span> |
+High: <span id="high">0</span>
+</div>
+
+<div id="gameover">GAME OVER</div>
+
+<div class="doraemon" id="player">
+  <div class="body">
+    <div class="face"></div>
+  </div>
+</div>
+
+<div id="controls">
+  <button onclick="move(-30)">⬅</button>
+  <button onclick="move(30)">➡</button>
+</div>
+
+<script>
+let player = document.getElementById("player");
+let scoreEl = document.getElementById("score");
+let livesEl = document.getElementById("lives");
+let highEl = document.getElementById("high");
+let gameover = document.getElementById("gameover");
+
+let score = 0;
+let lives = 3;
+let x = 50;
+let speed = 2000;
+
+let high = localStorage.getItem("doraHigh") || 0;
+highEl.innerText = high;
+
+/* MOVE */
+function move(dx){
+  x += dx;
+  player.style.left = x + "px";
+}
+
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="ArrowLeft") move(-30);
+  if(e.key==="ArrowRight") move(30);
+});
+
+/* DORAYAKI */
+function spawnFood(){
+  let f = document.createElement("div");
+  f.className = "dorayaki";
+  f.style.left = Math.random()*window.innerWidth + "px";
+  document.body.appendChild(f);
+
+  let fall = setInterval(()=>{
+    let fr = f.getBoundingClientRect();
+    let pr = player.getBoundingClientRect();
+
+    if(fr.top > window.innerHeight){
+      f.remove();
+      clearInterval(fall);
+    }
+
+    if(
+      fr.left < pr.right &&
+      fr.right > pr.left &&
+      fr.top < pr.bottom &&
+      fr.bottom > pr.top
+    ){
+      score++;
+      scoreEl.innerText = score;
+      f.remove();
+      clearInterval(fall);
+
+      if(score % 5 === 0){
+        speed -= 200;
+        if(speed < 800) speed = 800;
+      }
+    }
+  },50);
+}
+
+/* ENEMY */
+function spawnRobot(){
+  let r = document.createElement("div");
+  r.className = "robot";
+  let rx = Math.random()*window.innerWidth;
+  r.style.left = rx + "px";
+  r.style.top = "0px";
+  document.body.appendChild(r);
+
+  let fall = setInterval(()=>{
+    let rr = r.getBoundingClientRect();
+    let pr = player.getBoundingClientRect();
+
+    r.style.top = rr.top + 3 + "px";
+
+    if(
+      rr.left < pr.right &&
+      rr.right > pr.left &&
+      rr.top < pr.bottom &&
+      rr.bottom > pr.top
+    ){
+      lives--;
+      livesEl.innerText = lives;
+      r.remove();
+      clearInterval(fall);
+
+      if(lives <= 0){
+        endGame();
+      }
+    }
+
+    if(rr.top > window.innerHeight){
+      r.remove();
+      clearInterval(fall);
+    }
+  },30);
+}
+
+/* GAME LOOP */
+setInterval(spawnFood, speed);
+setInterval(spawnRobot, 3000);
+
+/* GAME OVER */
+function endGame(){
+  gameover.style.display="block";
+
+  if(score > high){
+    localStorage.setItem("doraHigh", score);
+  }
+}
+</script>
+
+</body>
+</html>
